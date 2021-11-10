@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ScoreFragment">
+
+        <EditText
+            android:id="@+id/score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:textSize="25sp"
+            android:hint="@string/enter_the_score"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <RadioGroup
+            android:id="@+id/buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/score"
+            app:layout_constraintStart_toStartOf="@+id/score">
+        <RadioButton
+            android:id="@+id/addbuttom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10sp"
+            android:textSize="20sp"
+            android:hint="@string/add_1"
+            app:layout_constraintStart_toStartOf="@+id/score"
+            app:layout_constraintTop_toBottomOf="@+id/score"/>
+
+        <RadioButton
+            android:id="@+id/subtractbuttom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10sp"
+            android:textSize="20sp"
+            android:hint="@string/subtract_2"
+            app:layout_constraintStart_toStartOf="@+id/score"
+            app:layout_constraintTop_toBottomOf="@+id/addbuttom"/>
+
+        <RadioButton
+            android:id="@+id/add4buttom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10sp"
+            android:textSize="20sp"
+            android:hint="@string/add_4"
+            app:layout_constraintStart_toStartOf="@+id/score"
+            app:layout_constraintTop_toBottomOf="@+id/subtractbuttom"/>
+</RadioGroup>
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="20sp"
+            android:hint="@string/add_4"
+            app:layout_constraintEnd_toEndOf="@+id/score"
+            app:layout_constraintTop_toBottomOf="@+id/buttons"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

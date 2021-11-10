@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HW_team_score</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_the_score">Enter the Score</string>
+    <string name="add_1">Add 1</string>
+    <string name="subtract_2">Subtract 2</string>
+    <string name="add_4">Add 4</string>
+</resources>
