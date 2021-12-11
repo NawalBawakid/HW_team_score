@@ -1,5 +1,6 @@
 package com.example.hw_team_score
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,15 +10,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.hw_team_score.databinding.FragmentScoreBinding
 
-// xml not linked i don't know why
 class ScoreFragment : Fragment() {
     private val viewModel: ScoreViewModel by viewModels()
 
     private lateinit var binding:FragmentScoreBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,25 +23,34 @@ class ScoreFragment : Fragment() {
         binding = FragmentScoreBinding.inflate(inflater, container, false)
         return binding.root
     }
+    var firstCheck=true
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        binding.buttons.setOnCheckedChangeListener { group, checkedId ->
+
+           if (firstCheck) {
+               setIntValuOnly()
+               firstCheck=  false
+           }
+
+            when (checkedId) {
+                binding.addbuttom.id -> viewModel.add1()
+                binding.subtractbuttom.id -> viewModel.subtract()
+                else -> viewModel.add4()
+            }
+            binding.result.setText(viewModel.score.toString())
+        }
+
+    }
+
+    private fun setIntValuOnly() {
+        viewModel.setInitScore(binding.score.text.toString().toInt())
+    }
 
     override fun onDetach() {
         super.onDetach()
-    }
-
-    var total = binding.buttons.checkedRadioButtonId
-    var chosenbutton = when(total){
-        binding.addbuttom.id -> viewModel.add1()
-        binding.subtractbuttom.id -> viewModel.subtract()
-        else -> viewModel.add4()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.score.text.toString()
-        binding.addbuttom.setOnClickListener {viewModel.add1()}
-        binding.subtractbuttom.setOnClickListener {viewModel.subtract()}
-        binding.add4buttom.setOnClickListener {viewModel.add4()}
-        binding.result.setText(chosenbutton)
     }
 
 }
